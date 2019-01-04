@@ -3,8 +3,8 @@ import mongoose from 'mongoose'
 
 
 const accessTokenSchema = new mongoose.Schema({
-    accessToken:String,
-    expiresIn:Number
+    accessToken:'string',
+    expiresIn:'string'
 })
 
 

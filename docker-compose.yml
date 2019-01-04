@@ -9,3 +9,5 @@ services:
   mongo:
     image: mongo
     restart: always
+  redis:
+    image: redis-alpine

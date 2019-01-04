@@ -1,3 +1,4 @@
+import './index'
 import express from 'express'
 import './models'
 import './tasks'
@@ -12,7 +13,7 @@ registerRouter(app)
 
 app.use(function(err, req, res, next){
     res.status(err.status || 500)
-    res.json(error)
+    res.json(err)
 })
 app.use(function(req, res){
     res.type('text/plain')

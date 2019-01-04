@@ -1,2 +1,2 @@
-export const agendaDbUrl = 'mongodb://mongo/agenda'
-export const modelDbUrl = 'mongodb://mongo/model'
+export const agendaDbUrl = process.env.AGENDADBURL
+export const modelDbUrl = process.env.MODELDBURL

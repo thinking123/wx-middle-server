@@ -5,16 +5,19 @@ import {asyncWrap} from "../utils";
 async function getAccessToken(req , res) {
     const force = req.query.force
 
+    console.log("force" , force)
     if(force){
         await getAccessTokenTask()
     }
 
-    let tokens = await AccessToken.findOne({})
-    if(tokens.length === 0){
+    let token = await AccessToken.findOne({} , ["accessToken" , "expiresIn"])
+    if(!token){
         await getAccessTokenTask()
-        tokens = await AccessToken.findOne({})
+        token = await AccessToken.findOne({})
     }
-    const token = tokens.length > 0 ? tokens[0] : {error:'no token'}
+
+
+    token = token ? token : {error:'no token'}
 
     res.send(token)
 }

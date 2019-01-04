@@ -10,7 +10,8 @@ agenda.define('accessToken' , (job , done) => {
     (async ()=>{
         try{
             console.log('start access token job , count : ' , count++)
-            await getAccessToken();
+            const token = await getAccessToken();
+            console.log('task log ' , token)
         }catch (e) {
             console.log('error in task :' ,e)
         }
@@ -27,7 +28,7 @@ agenda.on('complete', job => {
 
 (async function() { // IIFE to give access to async/await
     await agenda.start();
-
+    agenda.now('accessToken')
     await agenda.every('90 minutes', 'accessToken');
 })();
 
